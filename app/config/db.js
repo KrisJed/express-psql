@@ -4,6 +4,7 @@ const config = {
   password: 'postgres',
   port: 5432,
   host: 'localhost',
+  ssl: true
 };
 
 module.exports = config;
