@@ -11,12 +11,23 @@ const getUsers = async (req, res) => {
 
 const getUser = async (req, res) => {
   try {
-    const data = await db.users.findOne();
+    const data = await db.users.findOne(
+      { where: { id: req.params.id} }
+    );
+    if (data === null) {
+      console.log('Not found!');
+    } else {
     res.status(200).send({ data });
-  } catch (err) {
+  }} 
+  catch (err) {
     console.log(err);
   }
 };
+
+
+
+
+
 
 module.exports = { getUsers, getUser };
 

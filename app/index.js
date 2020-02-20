@@ -6,9 +6,10 @@ const db = require('./model/index');
 const port = 3000;
 
 db.sequelize
-  .authenticate()
-  .then(() => console.log('Connected to database'))
-  .catch(e => console.log(e));
+.authenticate()
+.then(() => console.log('Connected'))
+.catch(err => console.error(err));
+
 
 // ROUTER
 const router = express
