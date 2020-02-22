@@ -24,30 +24,29 @@ const getUser = async (req, res) => {
   }
 };
 
+ const createUser = async (req, res, next) => {
+  try {
+    const data = await db.users.create(req.body);
+    next();
+  } catch (err) {
+    console.log(err);
+  }
+};
 
+const deletetUser = async (req, res) => {
+  try {
+    if (req.params.id !== undefined) {
+      const data = await db.users.destroy(
+        { where: { id: req.params.id} });
+      console.log('Deleted!');    
+    } else {
+      console.log('Not found!');
+  }} catch (err) {
+    console.log(err);
+  }
+};
 
-
-
-
-module.exports = { getUsers, getUser };
-
-// export const getUser = async (req, res) => {
-//   try {
-//     const result = await client.query(getUserQuery(req.params.id));
-//     res.status(200).send({ data: result.rows[0] });
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
-
-// export const createUser = async (req, res, next) => {
-//   try {
-//     await client.query(createUserQuery(req.body));
-//     next();
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
+module.exports = { getUsers, getUser, createUser };
 
 // export const updateUser = async (req, res, next) => {
 //   try {
@@ -58,11 +57,3 @@ module.exports = { getUsers, getUser };
 //   }
 // };
 
-// export const deleteUser = async (req, res, next) => {
-//   try {
-//     await client.query(deleteUserQuery(req.params.id));
-//     next();
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };

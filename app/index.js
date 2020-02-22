@@ -15,8 +15,8 @@ db.sequelize
 const router = express
   .Router()
   .get('/', getUsers)
-  .get('/:id', getUser);
-// .post('/', createUser, getUser)
+  .get('/:id', getUser)
+  .post('/', createUser, getUser);
 // .put('/:id', updateUser, getUser)
 // .delete('/:id', deleteUser, getUsers);
 
